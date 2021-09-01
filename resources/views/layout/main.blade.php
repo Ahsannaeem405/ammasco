@@ -3,13 +3,14 @@
 <!-- BEGIN: Head-->
 
 <head>
+ @section("link")     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="description" content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
     <meta name="keywords" content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard eCommerce - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin Dashboard</title>
+    <title>@yield('tittle','Admin pannel')</title>
     <link rel="apple-touch-icon" href="{{asset('app_asset/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('app_asset/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
@@ -41,7 +42,9 @@
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+
     <!-- END: Custom CSS-->
+@show
 
 </head>
 <!-- END: Head-->
@@ -132,8 +135,12 @@
                     <ul class="nav navbar-nav float-right">
                         
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">John Doe</span><span class="avatar avatar-online"><img src="app_asset/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span></a>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-clipboard"></i> Todo</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="login-with-bg-image.html"><i class="ft-power"></i> Logout</a>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="ft-power"></i> Logout</a>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                                        @csrf
+                                    </form>
                             </div>
                         </li>
                     </ul>
@@ -150,7 +157,20 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 
-                <li class=" nav-item"><a href="ecommerce-product-shop.html"><i class="la la-th-large"></i><span class="menu-title" data-i18n="Shop">Shop</span></a>
+                <li class=" nav-item has-sub"><a href="#"><i class="la la-th-large"></i><span class="menu-title" data-i18n="Shop">Shop</span></a>
+                     <ul class="menu-content" style="">
+                        <li class=""><a class="menu-item" href="page-users-list.html"><i></i><span data-i18n="Users List">Add Product</span></a>
+                        </li>
+                        <li class=""><a class="menu-item" href="page-users-view.html"><i></i><span data-i18n="Users View">View Product</span></a>
+                        </li>
+                        <li class=""><a class="menu-item" href="page-users-edit.html"><i></i><span data-i18n="Users Edit">Users Edit</span></a>
+                        </li>
+                        <li class=""><a class="menu-item" href="user-profile.html"><i></i><span data-i18n="Users Profile">Users Profile</span></a>
+                        </li>
+                        <li class=""><a class="menu-item" href="user-cards.html"><i></i><span data-i18n="Users Cards">Users Cards</span></a>
+                        </li>
+                    </ul>
+
                 </li>
                 <li class=" nav-item"><a href="ecommerce-product-detail.html"><i class="la la-list"></i><span class="menu-title" data-i18n="Product Detail">Product Detail</span></a>
                 </li>
