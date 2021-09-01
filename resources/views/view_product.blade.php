@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="content-detached content-right">
-            <div class="content-body">
+            <div class="content-body" style="margin-left: 0px;">
                 <div class="product-shop">
                     <div class="card">
                         <div class="card-body">
