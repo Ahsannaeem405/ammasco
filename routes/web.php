@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +24,7 @@ Route::get('/cls', function() {
         return 'FINISHED';  
     });
 Route::get('/migrate', function() {
+    
         $run = Artisan::call('migrate:fresh --seed');
        
         return 'Complete';  
@@ -44,8 +44,14 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
     return view('welcome');
     });
     Route::get('/view_product', function () {
-    return view('view_product');
+    return view('admin.view_product');
     });
+
+    Route::get('/add_product', function () {
+    return view('admin.add_product');
+    });
+    
+    Route::post('/save_product', [App\Http\Controllers\admin::class, 'save_product']);
     
 
 	

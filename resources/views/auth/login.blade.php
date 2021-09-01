@@ -67,7 +67,7 @@
                                         <form class="form-horizontal" method="POST" action="{{ route('login') }}" novalidate>
                                         @csrf 
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
+                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter Email">
 
                                 
                                                 <div class="form-control-position">
@@ -80,7 +80,7 @@
                                                 @enderror
                                             </fieldset>
                                             <fieldset class="form-group position-relative has-icon-left">
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required >
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Enter Password" >
 
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
