@@ -94,11 +94,17 @@ class admin extends Controller
           else {
             return back()->with('error', 'Whoops! some error encountered. Please try again.');
               }
+    }
+    public function  user()
+    {      
+        $user =user::whereNull('email_verified_at')->where('role','3')->get();
+        $user2 =user::whereNotNull('email_verified_at')->where('role','3')->get();
 
+        return view('admin/product_edit' ,compact('user'));
 
+    }
 
-
-     }
+    
     
      
 }

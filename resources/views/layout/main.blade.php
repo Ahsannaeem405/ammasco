@@ -121,15 +121,13 @@
                 </li>
                 <li class="nav-item has-sub"><a href="#"><i class="la la-user"></i><span class="menu-title" data-i18n="Users">Users</span></a>
                     <ul class="menu-content" style="">
-                        <li class=""><a class="menu-item" href="page-users-list.html"><i></i><span data-i18n="Users List">Users List</span></a>
+                        <li class=""><a class="menu-item" href="{{url('user')}}"><i></i><span data-i18n="Users List">Users List</span></a>
                         </li>
                         <li class=""><a class="menu-item" href="page-users-view.html"><i></i><span data-i18n="Users View">Users View</span></a>
                         </li>
                         <li class=""><a class="menu-item" href="page-users-edit.html"><i></i><span data-i18n="Users Edit">Users Edit</span></a>
                         </li>
-                        <li class=""><a class="menu-item" href="user-profile.html"><i></i><span data-i18n="Users Profile">Users Profile</span></a>
-                        </li>
-                        <li class=""><a class="menu-item" href="user-cards.html"><i></i><span data-i18n="Users Cards">Users Cards</span></a>
+                       
                         </li>
                     </ul>
                 </li>
