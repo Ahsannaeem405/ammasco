@@ -52,8 +52,9 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
     });
     
     Route::post('/save_product', [App\Http\Controllers\admin::class, 'save_product']);
-    
-
+    Route::any('/product_dt/{id}', [App\Http\Controllers\admin::class, 'product_dt']);
+    Route::any('/product_edit/{id}', [App\Http\Controllers\admin::class, 'product_edit']);
+    Route::post('/product_update/{id}', [App\Http\Controllers\admin::class, 'product_update']);
 	
 
 });	

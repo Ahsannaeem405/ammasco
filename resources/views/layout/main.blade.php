@@ -100,22 +100,18 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 
-                <li class=" nav-item has-sub"><a href="#"><i class="la la-th-large"></i><span class="menu-title" data-i18n="Shop">Shop</span></a>
+                <li class="nav-item"><a href="{{url('admins/')}}"><i class="la la-th-large"></i><span class="menu-title" data-i18n="Shop">Dashboard</span></a>
+                    
+                       
+
+                </li>
+                <li class="nav-item has-sub "><a href=""><i class="la la-list"></i><span class="menu-title" data-i18n="Product Detail">Product</span></a>
                      <ul class="menu-content" style="">
                         <li class=""><a class="menu-item" href="{{url('admins/add_product')}}"><i></i><span data-i18n="Users List">Add Product</span></a>
                         </li>
                         <li class=""><a class="menu-item" href="{{url('admins/view_product')}}"><i></i><span data-i18n="Users View">View Product</span></a>
                         </li>
-                        <li class=""><a class="menu-item" href="page-users-edit.html"><i></i><span data-i18n="Users Edit">Users Edit</span></a>
-                        </li>
-                        <li class=""><a class="menu-item" href="user-profile.html"><i></i><span data-i18n="Users Profile">Users Profile</span></a>
-                        </li>
-                        <li class=""><a class="menu-item" href="user-cards.html"><i></i><span data-i18n="Users Cards">Users Cards</span></a>
-                        </li>
                     </ul>
-
-                </li>
-                <li class=" nav-item"><a href="ecommerce-product-detail.html"><i class="la la-list"></i><span class="menu-title" data-i18n="Product Detail">Product Detail</span></a>
                 </li>
                 <li class=" nav-item"><a href="ecommerce-shopping-cart.html"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="Shopping Cart">Shopping Cart</span></a>
                 </li>

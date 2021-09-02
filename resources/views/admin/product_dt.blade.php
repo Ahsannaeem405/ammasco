@@ -59,51 +59,64 @@
         </div>
         <div class="content-detached content-right">
             <div class="content-body" style="margin-left: 0px;">
-                <div class="product-shop">
-                    <div class="card">
+                <div class="card">
                         <div class="card-body">
-                            <span class="shop-title">Products</span>
-                            
-                        </div>
-                    </div>
-                    @php $pro=App\Models\product::all(); @endphp
-                    <div class="row match-height">
-                        @foreach($pro as $row)
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-
-                            <div class="card pull-up">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <a href="{{url('admins/product_dt/' .$row->id)}}">
-                                            <div class="product-img d-flex align-items-center">
-                                               
-                                                <img class="img-fluid mb-1" src="{{url('upload/images/' .$row->file)  }}" alt="Card image cap">
-                                            </div>
-                                            <h4 class="product-title">{{$row->name}}</h4>
-                                            <p>
-
-                                            {{Str::limit($row->dis, 60)}}</p>
-                                            <div class="price-reviews">
-                                                <span class="price-box">
-                                                    <span class="price">${{$row->price}}</span>
-                                                    
-                                                </span>
-                                                <span class="ratings float-right"></span>
-                                            </div>
-                                        </a>
-                                        <div class="product-action d-flex justify-content-around">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-sm-4 col-12">
+                                        <div class="product-img d-flex align-items-center">
                                             
-                                            <a href="{{url('admins/product_edit/' .$row->id)}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="la la-flash">Edit</i></a>
+                                            <img alt="Card image cap" class="img-fluid mb-1" src="{{url('upload/images/' .$user->file)  }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-12">
+                                        <div class="title-area clearfix">
+                                            <h2 class="product-title float-left">
+                                               {{$user->name}}
+                                            </h2>
+                                            
+                                        </div>
+                                        <div class="price-reviews clearfix">
+                                            <span class="price-box">
+                                                <span class="price h4">
+                                                    ${{$user->price}}
+                                                </span>
+                                              </span>
+                                            
+                                        </div>
+                                        <!-- Product Information -->
+                                        <div class="product-info">
+                                            <p>
+                                                {{$user->dis}}
+                                            </p>
+                                        
+                                                
+                                        </div>
+                                        <!-- Product Information Ends-->
+                                        <!-- Color Options -->
+                                        
+                                        <!-- Color Options Ends-->
+                                        <!-- Size Options Ends-->
+                                        <div class="row">
+                                            
+                                            
+                                            <div class="col-xl-5 col-lg-5 col-md-12 offset-xl-7">
+                                                <div class="product-buttons pl-2">
+                                                   
+                                                    <a class="btn btn-info btn-sm" href="{{url('admins/product_edit/' .$user->id)}}" style="width: 100%;">
+                                                        <i class="la la-flash">
+                                                        </i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                         
-                       
                     </div>
-                </div>
             </div>
         </div>
         
