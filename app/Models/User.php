@@ -43,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+     public function zone(){
+        return $this->belongsto('App\Models\zone');
+
+    }
+    public function limt(){
+        return $this->hasMany('App\Models\qtylimt');
+
+    }
 }

@@ -16,12 +16,25 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
+
+      <!-- BEGIN: Vendor CSS-->
+    
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    
+   
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+  
+
+
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/vendors.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/weather-icons/climacons.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/fonts/meteocons/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/charts/morris.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/charts/chartist.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/charts/chartist-plugin-tooltip.css')}}">
+    
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -38,10 +51,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/pages/timeline.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/pages/dashboard-ecommerce.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/plugins/animate/animate.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+     
 
     <!-- END: Custom CSS-->
 @show
@@ -113,20 +128,19 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-item"><a href="ecommerce-shopping-cart.html"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="Shopping Cart">Shopping Cart</span></a>
+                <li class=" nav-item"><a href="#"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="Shopping Cart">Shopping Cart</span></a>
                 </li>
-                <li class=" nav-item"><a href="ecommerce-checkout.html"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="Checkout">Checkout</span></a>
+                <li class=" nav-item"><a href="#"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="Checkout">Checkout</span></a>
                 </li>
-                <li class=" nav-item"><a href="ecommerce-order.html"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
+                <li class=" nav-item"><a href="#"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
                 </li>
                 <li class="nav-item has-sub"><a href="#"><i class="la la-user"></i><span class="menu-title" data-i18n="Users">Users</span></a>
                     <ul class="menu-content" style="">
-                        <li class=""><a class="menu-item" href="{{url('user')}}"><i></i><span data-i18n="Users List">Users List</span></a>
+                        <li class=""><a class="menu-item" href="{{url('admins/user')}}"><i></i><span data-i18n="Users List">Pending Users</span></a>
                         </li>
-                        <li class=""><a class="menu-item" href="page-users-view.html"><i></i><span data-i18n="Users View">Users View</span></a>
+                        <li class=""><a class="menu-item" href="{{url('admins/approve_user')}}"><i></i><span data-i18n="Users View">Approve Users</span></a>
                         </li>
-                        <li class=""><a class="menu-item" href="page-users-edit.html"><i></i><span data-i18n="Users Edit">Users Edit</span></a>
-                        </li>
+                        
                        
                         </li>
                     </ul>
@@ -168,6 +182,20 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{{asset('app_asset/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
+
+
+
+
+
+    <script src="{{asset('app_asset/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+
+    
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{asset('app_asset/js/scripts/tables/datatables/datatable-basic.js')}}"></script>
+    <script src="{{asset('app_asset/js/scripts/modal/components-modal.js')}}"></script>
+
     <!-- END: Page JS-->
 @show
 </body>

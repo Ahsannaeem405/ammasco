@@ -24,7 +24,7 @@ class usermiddleware
             else
             {
                 
-                return redirect('/home');
+                return redirect('email/verify');
             }
     }
 }

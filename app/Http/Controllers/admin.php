@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\User;
+use App\Models\qtylimt;
+use DB;
 
 class admin extends Controller
 {
@@ -95,14 +98,70 @@ class admin extends Controller
             return back()->with('error', 'Whoops! some error encountered. Please try again.');
               }
     }
-    public function  user()
+    public function user_list()
     {      
-        $user =user::whereNull('email_verified_at')->where('role','3')->get();
-        $user2 =user::whereNotNull('email_verified_at')->where('role','3')->get();
-
-        return view('admin/product_edit' ,compact('user'));
+      $user =User::whereNull('email_verified_at')->where('role','3')->get();
+      $user2 =User::whereNotNull('email_verified_at')->where('role','3')->get();
+      $pro =product::all();
+      return view('admin/user' ,compact('user','user2','pro'));
 
     }
+    public function approve_user()
+    {      
+     
+      $user2 =User::whereNotNull('email_verified_at')->where('role','3')->get();
+      
+      return view('admin/approve_user' ,compact('user2'));
+
+    }
+    
+     public function  approve(Request $request)
+     {
+
+        
+        for($i=0; $i<count($request->pro_id); $i++)
+        {
+          
+            $cheat=new qtylimt();
+            $cheat->pro_id=$request->pro_id[$i];
+            $cheat->mon_limit=$request->mon_limit[$i];
+            $cheat->user_id=$request->user_id;
+            $cheat->save();   
+        }
+          $user=User::find($request->user_id);
+          $user->email_verified_at =date('Y-m-d H:i:s');
+          $user->update();
+          if(!is_null($user)) {
+            return back()->with('success', 'User Successfully Approved');
+          }
+          else {
+            return back()->with('error', 'Whoops! some error encountered. Please try again.');
+              }
+
+     }
+     public function  update_limit(Request $request)
+     {
+
+        
+        for($i=0; $i<count($request->id); $i++)
+        {
+            DB::table('qtylimts')
+            ->where('id',$request->id[$i])
+            ->where('user_id',$request->user_id)
+            ->update([
+                    'mon_limit' => $request->mon_limit[$i]
+                    ]);
+            
+              
+        }
+          
+            return back()->with('success', 'Limit Successfully Updated');
+          
+
+     }
+     
+
+
 
     
     
