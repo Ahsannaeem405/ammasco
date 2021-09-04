@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\add_to_cart;
 use Illuminate\Support\Facades\auth;
-
+use DB;
 
 class user extends Controller
 {
@@ -68,11 +68,21 @@ class user extends Controller
     
      public function  cart()
     {  
+           
+
         $user =add_to_cart::where('user_id',Auth::user()->id)->get();    
        
         return view('user/cart' , compact('user'));
 
     } 
+     public function  check_out()
+    {  
+            
+        $user =add_to_cart::where('user_id',Auth::user()->id)->get();    
+       
+        return view('user/check_out' , compact('user'));
+
+    }
     public function  del_cat($id)
     {  
         $user =add_to_cart::find($id)->delete();    
@@ -80,5 +90,24 @@ class user extends Controller
         return back()->with('success', 'Product successfully remove from cart.');
 
     }   
+     public function  cart_update(Request $request)
+     {
+
+        
+        for($i=0; $i<count($request->id); $i++)
+        {
+            DB::table('add_to_carts')
+            ->where('id',$request->id[$i])
+            ->update([
+                    'qty' => $request->qty[$i]
+                    ]);
+            
+              
+        }
+          
+            return back()->with('success', 'Cart Successfully Updated');
+          
+
+     }
     
 }

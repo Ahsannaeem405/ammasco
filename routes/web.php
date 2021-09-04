@@ -83,7 +83,12 @@ Route::prefix('/user')->middleware(['auth','user'])->group(function (){
     Route::any('/add_too_cart/{id}', [App\Http\Controllers\user::class, 'add_too_cart']);
     
     Route::any('/cart', [App\Http\Controllers\user::class, 'cart']);
+    Route::any('/cart2', [App\Http\Controllers\user::class, 'cart2']);
+
     Route::any('/del_cat/{id}', [App\Http\Controllers\user::class, 'del_cat']);
+    Route::any('/cart_update', [App\Http\Controllers\user::class, 'cart_update']);
+    Route::any('/check_out', [App\Http\Controllers\user::class, 'check_out']);
+    
     
 
     

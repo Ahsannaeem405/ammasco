@@ -51,7 +51,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/pages/timeline.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/pages/dashboard-ecommerce.css')}}">
-     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/plugins/animate/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/plugins/animate/animate.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -90,8 +90,38 @@
 
                              
                     </ul>
+
+                    @php  $user =App\Models\User::whereNull('email_verified_at')->where('role','3')->get(); @endphp
                     <ul class="nav navbar-nav float-right">
-                        
+                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i><span class="badge badge-pill badge-danger badge-up badge-glow">
+                            @if(count($user)!=0) {{count($user)}} @endif</span></a>
+
+                            <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                                <li class="dropdown-menu-header">
+                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6><span class="notification-tag badge badge-danger float-right m-0">@if(count($user)!=0) {{count($user)}} New @endif</span>
+                                </li>
+                                @php $l=0; @endphp
+                                @foreach($user as $row)
+                                @php $l++; @endphp
+                                <li class="scrollable-container media-list w-100 ps">
+                                    <a href="{{url('admins/user')}}">
+                                        <div class="media">
+                                            <div class="media-left align-self-center"><i class="ft-plus-square icon-bg-circle bg-cyan mr-0"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">New User!</h6>
+                                                <p class="notification-text font-small-3 text-muted">{{$row->name}} waiting for your approval</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                @if($l==5)
+                                @break
+                                @endif
+                                @endforeach    
+
+                                <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"  href="{{url('admins/user')}}">Read all notifications</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">John Doe</span><span class="avatar avatar-online"><img src="app_asset/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

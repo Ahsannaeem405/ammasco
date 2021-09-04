@@ -45,15 +45,18 @@
         <div class="content-body">
             <div class="shopping-cart">
                 @if(Session::has('success'))
-  <div class="alert alert-success">
-    {{ Session::get('success') }}
-      @php
-        Session::forget('success');
-      @endphp
-  </div>
-  @endif
+                <div class="alert alert-success">
+                {{ Session::get('success') }}
+                @php
+                Session::forget('success');
+                @endphp
+                </div>
+                @endif
+               
                 <div class="tab-content pt-1">
                     <div role="tabpanel" class="tab-pane active" id="shop-cart-tab" aria-expanded="true" aria-labelledby="shopping-cart">
+                        <form method="POST" enctype="multipart/form-data" action="{{url('user/cart_update')}}">
+                        @csrf
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
@@ -69,6 +72,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+
                                             @foreach($user as $row_user)    
                                                 <tr>
                                                     <td>
@@ -81,8 +85,9 @@
                                                         
                                                     </td>
                                                     <td>
+                                                        <input type="hidden" name="id[]" value="{{$row_user->id}}">
                                                         <div class="input-group bootstrap-touchspin">
-                                                            <span class="input-group-btn input-group-prepend bootstrap-touchspin-injected"></span><input type="text" class="text-center count touchspin form-control" value="{{$row_user->qty}}"><span class="input-group-btn input-group-append bootstrap-touchspin-injected"></span>
+                                                            <span class="input-group-btn input-group-prepend bootstrap-touchspin-injected"></span><input type="text" class="text-center count touchspin form-control" name="qty[]" value="{{$row_user->qty}}"><span class="input-group-btn input-group-append bootstrap-touchspin-injected"></span>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -90,7 +95,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="product-action">
-                                                            <a href="{{url('user/del_cat/' .$row_user->id)}}"><i class="ft-trash-2"></i></a>
+                                                            <a href="{{url('user/del_cat/' .$row_user->id)}}"><i class="ft-trash-2" onclick="return confirm('Are you sure you want to delete this item')"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -114,17 +119,22 @@
                                         <div class="card-body">
                                             @php $sum=0; @endphp
                                              @foreach($user as $row_user) 
-                                             @php  $sum=$sum+$row_user->pro->price; @endphp
+                                             @php
+                                                $qty=$row_user->pro->price * $row_user->qty;
+
+                                                $sum=$sum+$qty; @endphp
                                              
-                                            <div class="price-detail">{{$row_user->pro->name}}<span class="float-right">${{$row_user->pro->price}}</span></div>
+                                            <div class="price-detail">{{$row_user->pro->name}} ({{$row_user->qty}})<span class="float-right">${{$row_user->pro->price * $row_user->qty}}</span></div>
                                             @endforeach
                                             <hr>
                                             <strong>
-                                            <div class="price-detail">Total ({{count($user)}}) <span class="float-right">${{$sum}}</span></div></strong>
+                                            <div class="price-detail">Total ({{count($user)}})<span class="float-right">${{$sum}}</span></div></strong>
                                             <div class="total-savings">
                                                 <div class="text-right">
                                                 @if(count($user)!=null)    
-                                                    <a href="ecommerce-checkout.html" class="btn btn-warning">Place Order</a>
+                                                    <button type="submit" class="btn btn-info">Update Cart</button>
+                                                    
+
                                                 @endif    
                                                 </div>
                                             </div>
@@ -133,11 +143,21 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                         
                     </div>
                    
+
+                
+
+
+
+               
+                        
+                    
+                        
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div> 
@@ -164,4 +184,29 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{{asset('app_asset/js/scripts/pages/ecommerce-cart.js')}}"></script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+<script type="text/javascript">
+var paymentForm = document.getElementById('paymentForm');
+paymentForm.addEventListener('submit', payWithPaystack, false);
+function payWithPaystack() {
+  var handler = PaystackPop.setup({
+    key: 'pk_test_4cb21644d3480c84ef8dfb07f4bbb5abc2cf819c', // Replace with your public key
+    email: document.getElementById('email-address').value,
+    amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+    currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
+    ref: 'YOUR_REFERENCE', // Replace with a reference you generated
+    callback: function(response) {
+      //this happens after the payment is completed successfully
+      var reference = response.reference;
+      alert('Payment complete! Reference: ' + reference);
+      // Make an AJAX call to your server with the reference to verify the transaction
+    },
+    onClose: function() {
+      alert('Transaction was not completed, window closed.');
+    },
+  });
+  handler.openIframe();
+}
+</script>
     @endsection    
