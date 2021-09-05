@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use App\Models\User;
 use App\Models\qtylimt;
+use App\Models\order;
+use App\Models\order_detail;
+
 use DB;
 
 class admin extends Controller
@@ -159,6 +162,17 @@ class admin extends Controller
           
 
      }
+    public function  order()
+     {
+        $user =order::all();
+        return view('admin/order' ,compact('user'));
+     }
+     public function  order_dt($id)
+     {
+        $user =order_detail::where('order_id' ,$id)->get();
+        return view('admin/order_dt' ,compact('user'));
+     }
+     
      
 
 

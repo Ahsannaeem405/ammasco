@@ -123,19 +123,9 @@
                 </li>
                 <li class=" nav-item"><a href="{{url('user/check_out')}}"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="Checkout">Checkout</span></a>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
+                <li class=" nav-item"><a href="{{url('user/order')}}"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
                 </li>
-                <li class="nav-item has-sub"><a href="#"><i class="la la-user"></i><span class="menu-title" data-i18n="Users">Users</span></a>
-                    <ul class="menu-content" style="">
-                        <li class=""><a class="menu-item" href="{{url('admins/user')}}"><i></i><span data-i18n="Users List">Pending Users</span></a>
-                        </li>
-                        <li class=""><a class="menu-item" href="{{url('admins/approve_user')}}"><i></i><span data-i18n="Users View">Approve Users</span></a>
-                        </li>
-                        
-                       
-                        </li>
-                    </ul>
-                </li>
+                
                
             </ul>
         </div>

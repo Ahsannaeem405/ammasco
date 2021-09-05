@@ -542,6 +542,8 @@ class ComposerStaticInit34fe921993d62e0cc06ba324d9505e24
         'App\\Http\\Middleware\\usermiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/usermiddleware.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\add_to_cart' => __DIR__ . '/../..' . '/app/Models/add_to_cart.php',
+        'App\\Models\\order' => __DIR__ . '/../..' . '/app/Models/order.php',
+        'App\\Models\\order_detail' => __DIR__ . '/../..' . '/app/Models/order_detail.php',
         'App\\Models\\product' => __DIR__ . '/../..' . '/app/Models/product.php',
         'App\\Models\\qtylimt' => __DIR__ . '/../..' . '/app/Models/qtylimt.php',
         'App\\Models\\zone' => __DIR__ . '/../..' . '/app/Models/zone.php',

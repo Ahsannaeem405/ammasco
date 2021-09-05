@@ -57,6 +57,14 @@
             </div>
            
         </div>
+          @if(Session::has('success'))
+  <div class="alert alert-success">
+    {{ Session::get('success') }}
+      @php
+        Session::forget('success');
+      @endphp
+  </div>
+  @endif
         <div class="content-detached content-right">
             <div class="content-body" style="margin-left: 0px;">
                 <div class="product-shop">

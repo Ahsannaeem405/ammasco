@@ -85,7 +85,7 @@
                                                     <th>Details</th>
                                                     <th>No. Of Products</th>
                                                     <th>Total</th>
-                                                    <th>Action</th>
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -102,19 +102,15 @@
                                                         
                                                     </td>
                                                     <td>
-                                                        <input type="hidden" name="id[]" value="{{$row_user->id}}">
+                                                        
                                                         <div class="input-group bootstrap-touchspin">
-                                                            <span class="input-group-btn input-group-prepend bootstrap-touchspin-injected"></span><input type="text" class="text-center count touchspin form-control" name="qty[]" value="{{$row_user->qty}}"><span class="input-group-btn input-group-append bootstrap-touchspin-injected"></span>
+                                                           {{$row_user->qty}}
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="total-price">${{$row_user->pro->price}}</div>
                                                     </td>
-                                                    <td>
-                                                        <div class="product-action">
-                                                            <a href="{{url('user/del_cat/' .$row_user->id)}}"><i class="ft-trash-2" onclick="return confirm('Are you sure you want to delete this item')"></i></a>
-                                                        </div>
-                                                    </td>
+                                                    
                                                 </tr>
                                             @endforeach    
                                             </tbody>
@@ -148,11 +144,11 @@
                                             <div class="price-detail">Total ({{count($user)}})<span class="float-right">${{$sum}}</span></div></strong>
                                             <div class="total-savings">
                                                 <div class="text-right">
-                                                @if(count($user)!=null)    
-                                                    <button type="submit" class="btn btn-info">Update Cart</button>
+                                                
+                                                    <button type="submit" class="btn btn-info">Send Verfiction Email</button>
                                                     
 
-                                                @endif    
+                                              
                                                 </div>
                                             </div>
                                         </div>

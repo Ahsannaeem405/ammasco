@@ -65,6 +65,9 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
     Route::post('/approve', [App\Http\Controllers\admin::class, 'approve']);
     Route::any('/approve_user', [App\Http\Controllers\admin::class, 'approve_user']);
     Route::any('/update_limit', [App\Http\Controllers\admin::class, 'update_limit']);
+    Route::any('/order', [App\Http\Controllers\admin::class, 'order']);
+    Route::any('/order_dt/{id}', [App\Http\Controllers\admin::class, 'order_dt']);
+ 
 
 
     
@@ -88,6 +91,10 @@ Route::prefix('/user')->middleware(['auth','user'])->group(function (){
     Route::any('/del_cat/{id}', [App\Http\Controllers\user::class, 'del_cat']);
     Route::any('/cart_update', [App\Http\Controllers\user::class, 'cart_update']);
     Route::any('/check_out', [App\Http\Controllers\user::class, 'check_out']);
+    Route::any('/place_order/{id}', [App\Http\Controllers\user::class, 'place_order']);
+    Route::any('/order', [App\Http\Controllers\user::class, 'order']);
+    Route::any('/order_dt/{id}', [App\Http\Controllers\user::class, 'order_dt']);
+    
     
     
 

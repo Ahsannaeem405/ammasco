@@ -67,74 +67,37 @@
                             <div class="row">
                                 <div class="col-md-4 order-md-2 mb-4">
                                     <div class="card">
-                                        <div class="card-header mb-3">
-                                            <h4 class="card-title">Your cart (4)</h4>
+                                                                               <div class="card-header mb-3">
+                                            <h4 class="card-title">Your cart ({{count($user)}})</h4>
                                         </div>
                                         <div class="card-content">
                                             <ul class="list-group mb-3">
+                                                @php $sum=0; @endphp
+                                            @foreach($user as $row_user) 
+                                            @php
+                                                $qty=$row_user->pro->price * $row_user->qty;
+
+                                                $sum=$sum+$qty; @endphp    
                                                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                                                     <div>
-                                                        <h6 class="my-0">Fitbit Alta HR Special Edition x 1</h6>
-                                                        <small class="text-muted">Brief description</small>
+                                                        <h6 class="my-0">{{$row_user->pro->name}} ({{$row_user->qty}})</h6>
+
                                                     </div>
-                                                    <span class="text-muted">$250</span>
+                                                    <span class="text-muted">${{$row_user->pro->price}}</span>
                                                 </li>
-                                                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                    <div>
-                                                        <h6 class="my-0">Mackbook pro 19'' x 1</h6>
-                                                        <small class="text-muted">Brief description</small>
-                                                    </div>
-                                                    <span class="text-muted">$1150</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                    <div>
-                                                        <h6 class="my-0">VR Headset x 2</h6>
-                                                        <small class="text-muted">Brief description</small>
-                                                    </div>
-                                                    <span class="text-muted">$700</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                                    <div>
-                                                        <h6 class="my-0">Smart Watch with LED x 1</h6>
-                                                        <small class="text-muted">Brief description</small>
-                                                    </div>
-                                                    <span class="text-muted">$700</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between">
-                                                    <span class="product-name"><strong>Cart Subtotal</strong></span>
-                                                    <span class="product-price"><strong>$2800</strong></span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between">
-                                                    <div class="text-success">
-                                                        <h6 class="my-0">Promo code</h6>
-                                                        <small>EXAMPLECODE</small>
-                                                    </div>
-                                                    <span class="text-success">-$200</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between">
-                                                    <span class="product-name">Shipping &amp; Handling</span>
-                                                    <span class="product-price">$100</span>
-                                                </li>
-                                                <li class="list-group-item d-flex justify-content-between">
-                                                    <span class="product-name">TAX / VAT</span>
-                                                    <span class="product-price">$0</span>
-                                                </li>
+                                            @endforeach  
                                                 <li class="list-group-item d-flex justify-content-between">
                                                     <span class="product-name success">Order Total</span>
-                                                    <span class="product-price">$2700</span>
+                                                    <span class="product-price">${{$sum}}</span>
+                                                    
                                                 </li>
+                                                <a  href="{{url('user/place_order/' .$sum)}}">
+                                                      <button type="button" class="btn btn-info">Place Order</button></a>
                                             </ul>
                                         </div>
                                     </div>
 
-                                    <form class="card p-2">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Promo code">
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-secondary">Redeem</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                   
                                 </div>
                                 <div class="col-md-8 order-md-1">
                                     <div class="card">

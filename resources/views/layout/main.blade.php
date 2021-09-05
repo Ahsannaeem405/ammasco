@@ -158,11 +158,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="Shopping Cart">Shopping Cart</span></a>
-                </li>
-                <li class=" nav-item"><a href="#"><i class="la la-credit-card"></i><span class="menu-title" data-i18n="Checkout">Checkout</span></a>
-                </li>
-                <li class=" nav-item"><a href="#"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
+               
+                <li class=" nav-item"><a href="{{url('admins/order')}}"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
                 </li>
                 <li class="nav-item has-sub"><a href="#"><i class="la la-user"></i><span class="menu-title" data-i18n="Users">Users</span></a>
                     <ul class="menu-content" style="">

@@ -49,31 +49,11 @@
                 
                 
            
-                @if(isset($arr1))
-                @foreach($arr1 as $row)
-                <div class="alert alert-success">
                 
-                {{$row['prod']}} 
-                
-                </div>
-                @endforeach
-                @endif
-
-
-                 @if(isset($arr))
-                @foreach($arr as $row)
-                <div class="alert alert-danger">
-                
-                Alert!!{{$row['product']}} 
-                
-                </div>
-                @endforeach
-                @endif
                
                 <div class="tab-content pt-1">
                     <div role="tabpanel" class="tab-pane active" id="shop-cart-tab" aria-expanded="true" aria-labelledby="shopping-cart">
-                        <form method="POST" enctype="multipart/form-data" action="{{url('user/cart_update')}}">
-                        @csrf
+                        
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
@@ -81,9 +61,8 @@
                                         <table class="table table-borderless mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Product</th>
-                                                    <th>Details</th>
-                                                    <th>No. Of Products</th>
+                                                    <th>Refrecnce No</th>
+                                                    <th>User Name</th>
                                                     <th>Total</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -92,28 +71,25 @@
 
                                             @foreach($user as $row_user)    
                                                 <tr>
+                                                  
                                                     <td>
-                                                        <div class="product-img d-flex align-items-center">
-                                                            <img class="img-fluid" src="{{url('upload/images/' .$row_user->pro->file)  }}" alt="Card image cap">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="product-title">{{$row_user->pro->name}}</div>
+                                                        <div class="product-title">{{$row_user->refrecnce_no}}</div>
                                                         
                                                     </td>
                                                     <td>
-                                                        <input type="hidden" name="id[]" value="{{$row_user->id}}">
-                                                        <div class="input-group bootstrap-touchspin">
-                                                            <span class="input-group-btn input-group-prepend bootstrap-touchspin-injected"></span><input type="text" class="text-center count touchspin form-control" name="qty[]" value="{{$row_user->qty}}"><span class="input-group-btn input-group-append bootstrap-touchspin-injected"></span>
-                                                        </div>
+                                                       
+                                                        {{$row_user->name->name}}
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        ${{$row_user->total}}
                                                     </td>
                                                     <td>
-                                                        <div class="total-price">${{$row_user->pro->price}}</div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="product-action">
-                                                            <a href="{{url('user/del_cat/' .$row_user->id)}}"><i class="ft-trash-2" onclick="return confirm('Are you sure you want to delete this item')"></i></a>
-                                                        </div>
+
+                                                            <a  href="{{url('user/order_dt/' .$row_user->id)}}">
+                                                                <button type="button" class="btn btn-info">Detail</button></a>
+                                                            
+                                                        
                                                     </td>
                                                 </tr>
                                             @endforeach    
@@ -123,44 +99,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row match-height">
-                            <div class="col-lg-6 col-md-12">
-                                
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="card" >
-                                    <div class="card-header">
-                                        <h4 class="card-title">Price Details</h4>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            @php $sum=0; @endphp
-                                             @foreach($user as $row_user) 
-                                             @php
-                                                $qty=$row_user->pro->price * $row_user->qty;
-
-                                                $sum=$sum+$qty; @endphp
-                                             
-                                            <div class="price-detail">{{$row_user->pro->name}} ({{$row_user->qty}})<span class="float-right">${{$row_user->pro->price * $row_user->qty}}</span></div>
-                                            @endforeach
-                                            <hr>
-                                            <strong>
-                                            <div class="price-detail">Total ({{count($user)}})<span class="float-right">${{$sum}}</span></div></strong>
-                                            <div class="total-savings">
-                                                <div class="text-right">
-                                                @if(count($user)!=null)    
-                                                    <button type="submit" class="btn btn-info">Update Cart</button>
-                                                    
-
-                                                @endif    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </form>
+                        
                         
                     </div>
                    

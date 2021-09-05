@@ -32,6 +32,8 @@ return array(
     'App\\Http\\Middleware\\usermiddleware' => $baseDir . '/app/Http/Middleware/usermiddleware.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\add_to_cart' => $baseDir . '/app/Models/add_to_cart.php',
+    'App\\Models\\order' => $baseDir . '/app/Models/order.php',
+    'App\\Models\\order_detail' => $baseDir . '/app/Models/order_detail.php',
     'App\\Models\\product' => $baseDir . '/app/Models/product.php',
     'App\\Models\\qtylimt' => $baseDir . '/app/Models/qtylimt.php',
     'App\\Models\\zone' => $baseDir . '/app/Models/zone.php',
