@@ -3,6 +3,7 @@
  <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/forms/icheck/icheck.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css')}}">
+    <title>Order</title>
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -64,6 +65,7 @@
                                                     <th>Refrecnce No</th>
                                                     <th>User Name</th>
                                                     <th>Total</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -84,6 +86,15 @@
                                                     <td>
                                                         ${{$row_user->total}}
                                                     </td>
+                                                    <td>
+                                                        @if($row_user->status == null)
+                                                        Not Confirm
+                                                        @else
+                                                        Confirm
+                                                        @endif
+
+                                                    </td>
+
                                                     <td>
 
                                                             <a  href="{{url('admins/order_dt/' .$row_user->id)}}">

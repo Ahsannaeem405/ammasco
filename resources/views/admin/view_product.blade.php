@@ -1,4 +1,5 @@
 @extends('../../layout/main')
+
 @section('link')
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,10 +92,12 @@
                                                 <span class="ratings float-right"></span>
                                             </div>
                                         </a>
+                                        @if(Auth::user()->edit_product=='on') 
                                         <div class="product-action d-flex justify-content-around">
                                             
                                             <a href="{{url('admins/product_edit/' .$row->id)}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="la la-flash">Edit</i></a>
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

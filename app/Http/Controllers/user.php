@@ -228,6 +228,7 @@ class user extends Controller
       
    public function  place_order($id)
    {
+   	        
    	        $user =add_to_cart::where('user_id',Auth::user()->id)->get(); 
    	        $order=new order();
             $order->user_id=Auth::user()->id;
@@ -239,7 +240,7 @@ class user extends Controller
              $ref->update();
 
 
-              return back()->with('success', 'Order Placed');
+              
 
 
 
@@ -261,6 +262,7 @@ class user extends Controller
 
 
         }
+        return back()->with('success', 'Order Placed');
 
    }
    public function  order()

@@ -1,4 +1,8 @@
 @extends('../layout/main')
+@section('tittle') 
+Pending Product
+@endsection
+
 @section('body_content')
 
 <div class="app-content content">

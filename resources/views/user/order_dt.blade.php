@@ -145,7 +145,7 @@
                                             <div class="total-savings">
                                                 <div class="text-right">
                                                 
-                                                    <button type="submit" class="btn btn-info">Send Verfiction Email</button>
+                                                   
                                                     
 
                                               

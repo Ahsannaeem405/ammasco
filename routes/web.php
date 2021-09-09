@@ -36,7 +36,9 @@ Route::get('/email/verify', function () {
     return view('auth.verify');
     });  
 
-
+Route::get('/email/not_allow', function () {
+    return view('auth.verify2');
+    }); 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -44,12 +46,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
+Route::prefix('/admins')->middleware(['auth','admin','role'])->group(function (){
 
 	Route::get('/', function () {
-    return view('welcome');
+    return view('admin/welcome');
     });
-    Route::get('/view_product', function () {
+        Route::get('/view_product', function () {
+      
     return view('admin.view_product');
     });
 
@@ -67,6 +70,15 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
     Route::any('/update_limit', [App\Http\Controllers\admin::class, 'update_limit']);
     Route::any('/order', [App\Http\Controllers\admin::class, 'order']);
     Route::any('/order_dt/{id}', [App\Http\Controllers\admin::class, 'order_dt']);
+    Route::any('/add_manager', [App\Http\Controllers\admin::class, 'add_manager']);
+    Route::post('/register_manager', [App\Http\Controllers\admin::class, 'register_manager']);
+    Route::any('/send_mail/{id}', [App\Http\Controllers\admin::class, 'send_mail']);
+    Route::any('/manager', [App\Http\Controllers\admin::class, 'manager']);
+    Route::any('/edit_manager/{id}', [App\Http\Controllers\admin::class, 'edit_manager']);
+    Route::any('/update_manager/{id}', [App\Http\Controllers\admin::class, 'update_manager']);
+
+
+ 
  
 
 

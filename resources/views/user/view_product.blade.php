@@ -74,7 +74,7 @@
                             
                         </div>
                     </div>
-                    @php $pro=App\Models\product::all(); @endphp
+                    @php $pro=App\Models\qtylimt::where('user_id',Auth::user()->id)->get(); @endphp
                     <div class="row match-height">
                         @foreach($pro as $row)
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
@@ -85,15 +85,15 @@
                                         <a href="{{url('user/product_dt/' .$row->id)}}">
                                             <div class="product-img d-flex align-items-center">
                                                
-                                                <img class="img-fluid mb-1" src="{{url('upload/images/' .$row->file)  }}" alt="Card image cap">
+                                                <img class="img-fluid mb-1" src="{{url('upload/images/' .$row->pro->file)  }}" alt="Card image cap">
                                             </div>
-                                            <h4 class="product-title">{{$row->name}}</h4>
+                                            <h4 class="product-title">{{$row->pro->name}}</h4>
                                             <p>
 
-                                            {{Str::limit($row->dis, 60)}}</p>
+                                            {{Str::limit($row->pro->dis, 60)}}</p>
                                             <div class="price-reviews">
                                                 <span class="price-box">
-                                                    <span class="price">${{$row->price}}</span>
+                                                    <span class="price">${{$row->pro->price}}</span>
                                                     
                                                 </span>
                                                 <span class="ratings float-right"></span>

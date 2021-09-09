@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class usermiddleware
 {
@@ -16,7 +17,7 @@ class usermiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-       if(\auth::user()->role=='3' && \auth::user()->email_verified_at != null)
+       if(Auth::user()->role=='3' && Auth::user()->email_verified_at != null)
             {
                 
                 return $next($request);

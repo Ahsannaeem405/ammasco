@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/colors.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/components.css')}}">
     <!-- END: Theme CSS-->
+    <title>
+        Check Out
+    </title>
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/core/menu/menu-types/vertical-menu-modern.css')}}">
@@ -91,8 +94,8 @@
                                                     <span class="product-price">${{$sum}}</span>
                                                     
                                                 </li>
-                                                <a  href="{{url('user/place_order/' .$sum)}}">
-                                                      <button type="button" class="btn btn-info">Place Order</button></a>
+<!--                                                 <a  href="{{url('user/place_order/' .$sum)}}">
+                                                      <button type="button" class="btn btn-info">Place Order</button></a> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -124,7 +127,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <input type="hidden" id="amount" required / value="20">
+                                                    <input type="hidden" id="amount" required / value="{{$sum}}">
 
 
                                                     <div class="mb-3">
@@ -153,11 +156,14 @@ const paymentForm = document.getElementById('paymentForm');
 paymentForm.addEventListener("submit", payWithPaystack, false);
 function payWithPaystack(e) {
   e.preventDefault();
+ 
   let handler = PaystackPop.setup({
     key: 'pk_test_xxxxxxxxxx', // Replace with your public key
     email: document.getElementById("email-address").value,
     amount: document.getElementById("amount").value * 100,
-    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+    ref: ''+Math.floor((Math.random() * 1000000000) + 1), 
+    
+    // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
     // label: "Optional string that replaces customer email"
     onClose: function(){
       alert('Window closed.');
@@ -165,12 +171,17 @@ function payWithPaystack(e) {
     callback: function(response){
       let message = 'Payment complete! Reference: ' + response.reference;
       alert(message);
+      var amount= document.getElementById("amount").value;
+      window.location.href= "http://127.0.0.1:8000/user/place_order/"+amount;
     }
   });
   handler.openIframe();
 }
 </script>
-                                            </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+                                  </div>
                                         </div>
                                     </div>
                                 </div>

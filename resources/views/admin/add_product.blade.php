@@ -1,4 +1,8 @@
 @extends('../layout/main')
+@section('tittle') 
+Add Product
+@endsection
+
 @section('body_content') 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -15,14 +19,14 @@
     </div>
 @endif
 
-@if(Session::has('success'))
-  <div class="alert alert-success">
-    {{ Session::get('success') }}
-      @php
-        Session::forget('success');
-      @endphp
-  </div>
-  @endif
+	@if(Session::has('success'))
+	  <div class="alert alert-success">
+	    {{ Session::get('success') }}
+	      @php
+	        Session::forget('success');
+	      @endphp
+	  </div>
+	  @endif
 
     			<div class="card" style="">
 				<div class="card-header">

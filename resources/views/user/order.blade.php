@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/bootstrap-extended.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/colors.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/components.css')}}">
+    <title>Oder</title>
     <!-- END: Theme CSS-->
 
     <!-- BEGIN: Page CSS-->

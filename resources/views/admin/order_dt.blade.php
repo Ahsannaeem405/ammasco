@@ -142,15 +142,20 @@
                                             <hr>
                                             <strong>
                                             <div class="price-detail">Total ({{count($user)}})<span class="float-right">${{$sum}}</span></div></strong>
+                                            @if(Auth::user()->mail=='on')
                                             <div class="total-savings">
                                                 <div class="text-right">
-                                                
-                                                    <button type="submit" class="btn btn-info">Send Verfiction Email</button>
-                                                    
+                                                    @if($status ==null)
+                                                    <a href="{{url('admins/send_mail/' .$row_user->order_id)}}">
+                                                    <button type="button" class="btn btn-info">Confirm order</button></a>
+                                                    @else
+                                                     <button type="button" class="btn btn-info">Already Confirm</button>
+                                                    @endif
 
                                               
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

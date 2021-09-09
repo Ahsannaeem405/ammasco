@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
+
 
 class check_user
 {
@@ -16,13 +18,13 @@ class check_user
      */
     public function handle(Request $request, Closure $next)
     {
-            if(\auth::user()->role=='1')
+            if(Auth::user()->role=='1')
             {
                 
                 return 'admins/';
             }
 
-            else if(\auth::user()->role=='3' && \auth::user()->email_verified_at != null)
+            else if(Auth::user()->role=='3' && Auth::user()->email_verified_at != null)
             {
                 return 'user/';
                 

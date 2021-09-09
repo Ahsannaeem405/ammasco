@@ -8,6 +8,12 @@ use App\Models\User;
 use App\Models\qtylimt;
 use App\Models\order;
 use App\Models\order_detail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendmail;
+use App\Mail\sendmail2;
+
 
 use DB;
 
@@ -148,12 +154,31 @@ class admin extends Controller
         
         for($i=0; $i<count($request->id); $i++)
         {
+          if (qtylimt::where('id', '=', $request->id[$i])->exists()) 
+          {
             DB::table('qtylimts')
             ->where('id',$request->id[$i])
             ->where('user_id',$request->user_id)
             ->update([
                     'mon_limit' => $request->mon_limit[$i]
                     ]);
+
+          }
+          else{
+
+            $cheat=new qtylimt();
+            $cheat->pro_id=$request->p_id[$i];
+            $cheat->mon_limit=$request->mon_limit[$i];
+            $cheat->user_id=$request->user_id;
+            $cheat->save();
+
+
+
+
+
+          }
+
+            
             
               
         }
@@ -170,8 +195,132 @@ class admin extends Controller
      public function  order_dt($id)
      {
         $user =order_detail::where('order_id' ,$id)->get();
-        return view('admin/order_dt' ,compact('user'));
+        $status=order::where('id',$id)->value('status');
+        //dd($status);
+        return view('admin/order_dt' ,compact('user','status'));
      }
+      public function  add_manager()
+     {
+        return view('admin/add_manager');
+     }
+
+    public function  register_manager(Request $request)
+    {
+            $request->validate([
+                'f_name'        =>      'required',
+                'l_name'         =>      'required',
+                'email'         =>      'required',
+                'password'         =>      'required',
+               
+            ]);
+
+          
+          $user =new User;
+          $user->name = $request->input('f_name').$request->input('l_name');
+          $user->email =$request->input('email');
+          $user->password =Hash::make($request->input('password'));
+          $user->email_verified_at=date('Y-m-d H:i:s');
+          $user->role =1;
+          $user->dashboard =$request->input('dashboard');
+          $user->add_product =$request->input('add_product');
+          $user->edit_product =$request->input('edit_product');
+          $user->view_order =$request->input('view_order');
+          $user->mail =$request->input('mail');
+          $user->approve_user =$request->input('approve_user');
+          $user->pending_user =$request->input('pending_user');
+          $user->save();
+          if(!is_null($user)) {
+            return back()->with('success', 'Product Successfully Add.');
+          }
+          else {
+            return back()->with('error', 'Whoops! some error encountered. Please try again.');
+              }
+
+
+
+
+     }
+
+
+     public function send_mail($id)
+    {
+       
+       $user =order_detail::where('order_id' ,$id)->get();
+       $data=array();
+       $sum=0;
+       for($i=0; $i<count($user); $i++)
+        
+        {
+
+          
+          
+
+          $data[]= array(
+            'user_name'=>$user[$i]->user->name,
+            'name'=>$user[$i]->pro->name,
+            'qty'=>$user[$i]->qty,
+            'qty_tot'=>$user[$i]->pro->price
+          );
+
+
+                                   
+        } 
+
+        
+        
+       Mail::to('anaqvi527@gmail.com')->send(new sendmail($data));
+
+       Mail::to($user[0]->user->email)->send(new sendmail2($data));
+       $or=order::find($id);
+       $or->status=1;
+       $or->update();
+
+       return back()->with('success', 'Your Successfully Subscribe it');
+    }
+    public function manager()
+    {      
+     
+      $user2 =User::where('id','!=',1)->where('role','1')->get();
+      
+      return view('admin/manager' ,compact('user2'));
+
+    }
+    public function edit_manager($id)
+    {      
+     
+      $user2 =User::find($id);
+      return view('admin/edit_manager' ,compact('user2'));
+
+    }
+    public function  update_manager(Request $request,$id)
+    {
+          
+          $user =User::find($id);
+          $user->name = $request->input('f_name');
+          $user->email =$request->input('email');
+          $user->dashboard =$request->input('dashboard');
+          $user->add_product =$request->input('add_product');
+          $user->edit_product =$request->input('edit_product');
+          $user->view_order =$request->input('view_order');
+          $user->mail =$request->input('mail');
+          $user->approve_user =$request->input('approve_user');
+          $user->pending_user =$request->input('pending_user');
+          $user->update();
+          if(!is_null($user)) {
+            return back()->with('success', 'Product Successfully Add.');
+          }
+          else {
+            return back()->with('error', 'Whoops! some error encountered. Please try again.');
+              }
+
+
+
+
+     }
+    
+  
+     
+   
      
      
 

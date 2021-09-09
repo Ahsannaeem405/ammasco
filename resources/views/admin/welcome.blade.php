@@ -1,5 +1,17 @@
 @extends('../layout/main')
 @section('body_content')
+@php
+    $count_user=App\Models\User::where('role',3)->count();
+    $count_pro=App\Models\product::count();
+    $count_zone=App\Models\zone::count();
+    $count_order=App\Models\order::count();
+    $user =App\Models\User::where('role',3)->take('10')->get();
+    $order =App\Models\order::where('status',null)->take('10')->get();
+
+
+    
+
+@endphp
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
@@ -14,11 +26,12 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h3 class="info">850</h3>
-                                        <h6>Products Sold</h6>
+                                        <h3 class="info">{{$count_user}}</h3>
+                                        <h6>User</h6>
                                     </div>
                                     <div>
-                                        <i class="icon-basket-loaded info font-large-2 float-right"></i>
+                                         <i class="icon-user-follow info font-large-2 float-right"></i>
+                                        
                                     </div>
                                 </div>
                                 <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -34,11 +47,11 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h3 class="warning">$748</h3>
-                                        <h6>Net Profit</h6>
+                                        <h3 class="warning">{{$count_pro}}</h3>
+                                        <h6>Product</h6>
                                     </div>
                                     <div>
-                                        <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                                        <i class="icon-social-dropbox warning font-large-2 float-right"></i>
                                     </div>
                                 </div>
                                 <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -54,11 +67,12 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h3 class="success">146</h3>
-                                        <h6>New Customers</h6>
+                                        <h3 class="success">{{$count_zone}}</h3>
+                                        <h6>Zone</h6>
                                     </div>
                                     <div>
-                                        <i class="icon-user-follow success font-large-2 float-right"></i>
+                                        <i class="la la-globe success font-large-2 float-right"></i>
+                                       
                                     </div>
                                 </div>
                                 <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -74,11 +88,11 @@
                             <div class="card-body">
                                 <div class="media d-flex">
                                     <div class="media-body text-left">
-                                        <h3 class="danger">99.89 %</h3>
-                                        <h6>Customer Satisfaction</h6>
+                                        <h3 class="danger">{{$count_order}}</h3>
+                                        <h6>Order</h6>
                                     </div>
                                     <div>
-                                        <i class="icon-heart danger font-large-2 float-right"></i>
+                                        <i class="la la-list-alt danger font-large-2 float-right"></i>
                                     </div>
                                 </div>
                                 <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
@@ -116,97 +130,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($order as $row_order)
                                             <tr>
-                                                <td class="text-truncate">iPhone X</td>
+                                                <td class="text-truncate">{{$row_order->refrecnce_no}}</td>
                                                 <td class="text-truncate p-1">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="John Doe" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-19.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Katherine Nichols" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-18.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joseph Weaver" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-17.png" alt="Avatar">
-                                                        </li>
-                                                        <li class="avatar avatar-sm">
-                                                            <span class="badge badge-info">+4 more</span>
-                                                        </li>
-                                                    </ul>
+                                                    {{$row_order->name->name}}
                                                 </td>
-                                                <td class="text-truncate">$8999</td>
+                                                <td class="text-truncate">${{$row_order->total}}</td>
                                             </tr>
-                                            <tr>
-                                                <td class="text-truncate">Pixel 2</td>
-                                                <td class="text-truncate p-1">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Alice Scott" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-16.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Charles Miller" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-15.png" alt="Avatar">
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate">$5550</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">OnePlus</td>
-                                                <td class="text-truncate p-1">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Christine Ramos" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-11.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Thomas Brewer" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-10.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Alice Chapman" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-9.png" alt="Avatar">
-                                                        </li>
-                                                        <li class="avatar avatar-sm">
-                                                            <span class="badge badge-info">+3 more</span>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate">$9000</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">Galaxy</td>
-                                                <td class="text-truncate p-1">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Ryan Schneider" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-14.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Tiffany Oliver" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-13.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Joan Reid" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-12.png" alt="Avatar">
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate">$7500</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-truncate">Moto Z2</td>
-                                                <td class="text-truncate p-1">
-                                                    <ul class="list-unstyled users-list m-0">
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-8.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-7.png" alt="Avatar">
-                                                        </li>
-                                                        <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Rebecca Jones" class="avatar avatar-sm pull-up">
-                                                            <img class="media-object rounded-circle" src="app_asset/images/portrait/small/avatar-s-6.png" alt="Avatar">
-                                                        </li>
-                                                        <li class="avatar avatar-sm">
-                                                            <span class="badge badge-info">+1 more</span>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td class="text-truncate">$8500</td>
-                                            </tr>
+                                            @endforeach
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -222,188 +155,35 @@
                 <div id="recent-transactions" class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Recent Transactions</h4>
+                            <h4 class="card-title">Recent User</h4>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a class="btn btn-sm btn-danger box-shadow-2 round btn-min-width pull-right" href="invoice-summary.html" target="_blank">Invoice Summary</a></li>
-                                </ul>
+                                
                             </div>
                         </div>
                         <div class="card-content">
                             <div class="table-responsive">
-                                <table id="recent-orders" class="table table-hover table-xl mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Invoice#</th>
-                                            <th class="border-top-0">Customer Name</th>
-                                            <th class="border-top-0">Products</th>
-                                            <th class="border-top-0">Categories</th>
-                                            <th class="border-top-0">Shipping</th>
-                                            <th class="border-top-0">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i> Paid</td>
-                                            <td class="text-truncate"><a href="#">INV-001001</a></td>
-                                            <td class="text-truncate">
-                                                <span class="avatar avatar-xs">
-                                                    <img class="box-shadow-2" src="app_asset/images/portrait/small/avatar-s-4.png" alt="avatar">
-                                                </span>
-                                                <span>Elizabeth W.</span>
-                                            </td>
-                                            <td class="text-truncate p-1">
-                                                <ul class="list-unstyled users-list m-0">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-1.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-2.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Rebecca Jones" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-4.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li class="avatar avatar-sm">
-                                                        <span class="badge badge-info">+1 more</span>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-danger round">Food</button>
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                    <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-truncate">$ 1200.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><i class="la la-dot-circle-o danger font-medium-1 mr-1"></i> Declined</td>
-                                            <td class="text-truncate"><a href="#">INV-001002</a></td>
-                                            <td class="text-truncate">
-                                                <span class="avatar avatar-xs">
-                                                    <img class="box-shadow-2" src="app_asset/images/portrait/small/avatar-s-5.png" alt="avatar">
-                                                </span>
-                                                <span>Doris R.</span>
-                                            </td>
-                                            <td class="text-truncate p-1">
-                                                <ul class="list-unstyled users-list m-0">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-5.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-6.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li class="avatar avatar-sm">
-                                                        <span class="badge badge-info">+2 more</span>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-warning round">Electronics</button>
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                    <div class="progress-bar bg-gradient-x-warning" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-truncate">$ 1850.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><i class="la la-dot-circle-o warning font-medium-1 mr-1"></i> Pending</td>
-                                            <td class="text-truncate"><a href="#">INV-001003</a></td>
-                                            <td class="text-truncate">
-                                                <span class="avatar avatar-xs">
-                                                    <img class="box-shadow-2" src="app_asset/images/portrait/small/avatar-s-6.png" alt="avatar">
-                                                </span>
-                                                <span>Megan S.</span>
-                                            </td>
-                                            <td class="text-truncate p-1">
-                                                <ul class="list-unstyled users-list m-0">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-2.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-5.jpg" alt="Avatar">
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-success round">Groceries</button>
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                    <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-truncate">$ 3200.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i> Paid</td>
-                                            <td class="text-truncate"><a href="#">INV-001004</a></td>
-                                            <td class="text-truncate">
-                                                <span class="avatar avatar-xs">
-                                                    <img class="box-shadow-2" src="app_asset/images/portrait/small/avatar-s-7.png" alt="avatar">
-                                                </span>
-                                                <span>Andrew D.</span>
-                                            </td>
-                                            <td class="text-truncate p-1">
-                                                <ul class="list-unstyled users-list m-0">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-6.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-1.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li class="avatar avatar-sm">
-                                                        <span class="badge badge-info">+1 more</span>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-info round">Apparels</button>
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                    <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-truncate">$ 4500.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-truncate"><i class="la la-dot-circle-o success font-medium-1 mr-1"></i> Paid</td>
-                                            <td class="text-truncate"><a href="#">INV-001005</a></td>
-                                            <td class="text-truncate">
-                                                <span class="avatar avatar-xs">
-                                                    <img class="box-shadow-2" src="app_asset/images/portrait/small/avatar-s-9.png" alt="avatar">
-                                                </span>
-                                                <span>Walter R.</span>
-                                            </td>
-                                            <td class="text-truncate p-1">
-                                                <ul class="list-unstyled users-list m-0">
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Kimberly Simmons" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-5.jpg" alt="Avatar">
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="Willie Torres" class="avatar avatar-sm pull-up">
-                                                        <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="app_asset/images/portfolio/portfolio-3.jpg" alt="Avatar">
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-sm btn-outline-danger round">Food</button>
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
-                                                    <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-truncate">$ 1500.00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <table id="new-orders-table" class="table table-hover table-xl mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">Name</th>
+                                                <th class="border-top-0">Email</th>
+                                                <th class="border-top-0">Zone</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($user as $row)
+                                            <tr>
+                                                <td class="text-truncate">{{$row->name}}</td>
+                                                <td class="text-truncate p-1">
+                                                    {{$row->email}}
+                                                </td>
+                                                <td class="text-truncate">{{$row->zone->zone_name}}</td>
+                                            </tr>
+                                            @endforeach
+                                            
+                                        </tbody>
+                                    </table>
                             </div>
                         </div>
                     </div>
