@@ -20,6 +20,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456789'),
             'email_verified_at'=>date('Y-m-d H:i:s'),
             'role'=>'1',
+            'dashboard'=>'on',
+            'add_product'=>'on',
+            'edit_product'=>'on',
+            'view_order'=>'on',
+            'mail'=>'on',
+            'approve_user'=>'on',
+            'pending_user'=>'on',
+            'manager'=>'on',
             
         ]);
     }

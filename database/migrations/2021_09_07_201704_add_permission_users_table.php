@@ -22,6 +22,8 @@ class AddPermissionUsersTable extends Migration
             $table->text('mail')->nullable();
             $table->text('approve_user')->nullable();
             $table->text('pending_user')->nullable();
+            $table->text('manager')->nullable();
+            
 
         });
     }
