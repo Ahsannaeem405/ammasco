@@ -98,6 +98,7 @@ Approve User
                                                                 <label class="col-md-5 label-control">{{$row_pro->pro->name}} </label>
                                                                 <div class="col-md-7 mx-auto"> 
                                                                 <input type="hidden" placeholder="Enter Monthly Limit" class="form-control"  name="id[]" value="{{$row_pro->id}}">
+                                                                 <input type="hidden" placeholder="Enter Monthly Limit" class="form-control"  name="p_id[]" value="0">
                                                                 <input type="number" placeholder="Enter Monthly Limit" class="form-control" style="padding-right: 0px;"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" name="mon_limit[]" value="@if($row_pro->mon_limit==null){{0}}@else{{$row_pro->mon_limit}}@endif">
                                                                 </div>
                                                             </div>

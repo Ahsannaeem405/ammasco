@@ -151,7 +151,7 @@ class admin extends Controller
      public function  update_limit(Request $request)
      {
 
-        
+      
         for($i=0; $i<count($request->id); $i++)
         {
           if (qtylimt::where('id', '=', $request->id[$i])->exists()) 
