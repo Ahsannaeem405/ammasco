@@ -167,12 +167,14 @@ function payWithPaystack(e) {
     // label: "Optional string that replaces customer email"
     onClose: function(){
       alert('Window closed.');
+      var amount= document.getElementById("amount").value;
+      window.location.href= "http://ammasco.herokuapp.com/public/user/place_order/"+amount;
     },
     callback: function(response){
       let message = 'Payment complete! Reference: ' + response.reference;
       alert(message);
       var amount= document.getElementById("amount").value;
-      window.location.href= "http://127.0.0.1:8000/user/place_order/"+amount;
+      window.location.href= "http://ammasco.herokuapp.com/public/user/place_order/"+amount;
     }
   });
   handler.openIframe();
