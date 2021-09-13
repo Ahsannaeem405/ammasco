@@ -88,9 +88,9 @@
                                                     </td>
                                                     <td>
                                                         @if($row_user->status == null)
-                                                        Not Confirm
+                                                        Not Confirmed
                                                         @else
-                                                        Confirm
+                                                        Confirmed
                                                         @endif
 
                                                     </td>

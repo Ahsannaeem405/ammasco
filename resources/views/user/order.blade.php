@@ -65,6 +65,7 @@
                                                     <th>Refrecnce No</th>
                                                     <th>User Name</th>
                                                     <th>Total</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -81,7 +82,15 @@
                                                        
                                                         {{$row_user->name->name}}
                                                     </td>
-                                                    
+                                                    <td>
+                                                        @if($row_user->status == null)
+                                                        Not Confirmed
+                                                        @else
+                                                        Confirmed
+                                                        @endif
+
+                                                    </td>
+
                                                     <td>
                                                         ${{$row_user->total}}
                                                     </td>
