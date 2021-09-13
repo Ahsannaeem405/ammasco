@@ -1,7 +1,7 @@
 // Shopping Cart 
 
 $(document).ready(function() {
-	$(".touchspin").TouchSpin({ min: 1, max: 10});
+	$(".touchspin").TouchSpin({ min: 1, max: 1000});
 
 	$(".use-bill-address").click(function() {
 		console.log('clicked');
