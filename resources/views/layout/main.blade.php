@@ -94,11 +94,13 @@
                     @php  $user =App\Models\User::whereNull('email_verified_at')->where('role','3')->get(); @endphp
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>@if(Auth::user()->pending_user=='on')
+                             @if(count($user)!=0)
                             <span class="badge badge-pill badge-danger badge-up badge-glow">
                             
-                            @if(count($user)!=0) {{count($user)}} @endif
+                            {{count($user)}} 
                             
                             </span>
+                            @endif
                             @endif
 
                             </a>
