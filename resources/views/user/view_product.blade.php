@@ -103,7 +103,7 @@
                                             
                                             
 
-                                             <a  href="{{url('user/add_too_cart/' .$row->id)}}">
+                                             <a  href="{{url('user/add_too_cart/' .$row->pro_id)}}">
                                                         <i class="la la-shopping-cart">
                                                         </i>
                                                         Add to Cart
