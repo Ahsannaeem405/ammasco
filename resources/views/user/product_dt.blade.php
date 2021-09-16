@@ -89,7 +89,7 @@
                                         <div class="price-reviews clearfix">
                                             <span class="price-box">
                                                 <span class="price h4">
-                                                    ${{$user->price}}
+                                                    ₦{{$user->price}}
                                                 </span>
                                               </span>
                                             

@@ -52,14 +52,13 @@
                             <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                                 <div class="card-header border-0 pb-0">
                                     <div class="card-title text-center">
-                                        <img src="app_asset/images/logo/logo-dark.png" alt="branding logo">
+                                        <img src="{{asset('logo.png')}}" alt="branding logo">
                                     </div>
                                     <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"></h6>
                                 </div>
                                 <div class="card-content">
                                     <div class="text-center">
-                                        <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-facebook"><span class="la la-facebook"></span></a>
-                                        <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-twitter"><span class="la la-twitter"></span></a>
+                                       
                                         
                                     </div>
                                     

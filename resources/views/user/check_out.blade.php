@@ -86,12 +86,12 @@
                                                         <h6 class="my-0">{{$row_user->pro->name}} ({{$row_user->qty}})</h6>
 
                                                     </div>
-                                                    <span class="text-muted">${{$row_user->pro->price}}</span>
+                                                    <span class="text-muted">₦{{$row_user->pro->price}}</span>
                                                 </li>
                                             @endforeach  
                                                 <li class="list-group-item d-flex justify-content-between">
                                                     <span class="product-name success">Order Total</span>
-                                                    <span class="product-price">${{$sum}}</span>
+                                                    <span class="product-price">₦{{$sum}}</span>
                                                     
                                                 </li>
 <!--                                                 <a  href="{{url('user/place_order/' .$sum)}}">
@@ -158,7 +158,7 @@ function payWithPaystack(e) {
   e.preventDefault();
  
   let handler = PaystackPop.setup({
-    key: 'pk_test_xxxxxxxxxx', // Replace with your public key
+    key: 'pk_test_4cb21644d3480c84ef8dfb07f4bbb5abc2cf819c', // Replace with your public key
     email: document.getElementById("email-address").value,
     amount: document.getElementById("amount").value * 100,
     ref: ''+Math.floor((Math.random() * 1000000000) + 1), 
@@ -167,8 +167,7 @@ function payWithPaystack(e) {
     // label: "Optional string that replaces customer email"
     onClose: function(){
       alert('Window closed.');
-      var amount= document.getElementById("amount").value;
-      window.location.href= "http://ammasco.herokuapp.com/public/user/place_order/"+amount;
+     
     },
     callback: function(response){
       let message = 'Payment complete! Reference: ' + response.reference;

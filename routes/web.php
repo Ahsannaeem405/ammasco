@@ -76,6 +76,8 @@ Route::prefix('/admins')->middleware(['auth','admin','role'])->group(function ()
     Route::any('/manager', [App\Http\Controllers\admin::class, 'manager']);
     Route::any('/edit_manager/{id}', [App\Http\Controllers\admin::class, 'edit_manager']);
     Route::any('/update_manager/{id}', [App\Http\Controllers\admin::class, 'update_manager']);
+    Route::any('/order_repoort', [App\Http\Controllers\admin::class, 'order_repoort']);
+
 
 
  

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\sendmail;
 use App\Mail\sendmail2;
+use App\Mail\sendmail3;
 
 
 use DB;
@@ -31,10 +32,8 @@ class admin extends Controller
           $user =new product;
           $user->name = $request->input('name');
           $user->dis =$request->input('dis');
-          $user->price =$request->input('price');
-          
-          
-          
+          $user->sku =$request->input('sku');
+          $user->price =$request->input('price');        
           $user->file = $request->file;
 
           if($request->hasFile('file'))
@@ -83,6 +82,7 @@ class admin extends Controller
           $user =product::find($id);
           $user->name = $request->input('name');
           $user->dis =$request->input('dis');
+          $user->sku =$request->input('sku');
           $user->price =$request->input('price');
           
           
@@ -101,7 +101,7 @@ class admin extends Controller
 
           $user->save();
           if(!is_null($user)) {
-            return back()->with('success', 'Product Successfully Add.');
+            return back()->with('success', 'Product Successfully Updated.');
           }
           else {
             return back()->with('error', 'Whoops! some error encountered. Please try again.');
@@ -119,6 +119,9 @@ class admin extends Controller
     {      
      
       $user2 =User::whereNotNull('email_verified_at')->where('role','3')->get();
+
+
+
       
       return view('admin/approve_user' ,compact('user2'));
 
@@ -140,6 +143,10 @@ class admin extends Controller
           $user=User::find($request->user_id);
           $user->email_verified_at =date('Y-m-d H:i:s');
           $user->update();
+
+          $data=$user->name;
+          Mail::to($user->email)->send(new sendmail3($data));
+
           if(!is_null($user)) {
             return back()->with('success', 'User Successfully Approved');
           }
@@ -192,6 +199,12 @@ class admin extends Controller
         $user =order::all();
         return view('admin/order' ,compact('user'));
      }
+     public function  order_repoort()
+     {
+        $user =order::all();
+        return view('admin/order_repoort' ,compact('user'));
+     }
+     
      public function  order_dt($id)
      {
         $user =order_detail::where('order_id' ,$id)->get();

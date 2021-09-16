@@ -86,7 +86,7 @@
                                             {{Str::limit($row->dis, 60)}}</p>
                                             <div class="price-reviews">
                                                 <span class="price-box">
-                                                    <span class="price">${{$row->price}}</span>
+                                                    <span class="price">₦{{$row->price}}</span>
                                                     
                                                 </span>
                                                 <span class="ratings float-right"></span>

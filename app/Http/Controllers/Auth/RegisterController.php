@@ -7,8 +7,12 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Validator;
 
+use App\Mail\sendmail4;
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -29,7 +33,17 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'email/verify';
+   
+
+     protected function redirectTo(){
+       
+        $user=DB::table('users')->orderBy('created_at', 'desc')->first();
+        $data=$user->name;
+        
+        Mail::to('anaqvi527@gmail.com')->send(new sendmail4($data));
+
+        return 'email/verify';
+    }
 
     /**
      * Create a new controller instance.
@@ -65,6 +79,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -72,5 +87,7 @@ class RegisterController extends Controller
             'zone_id'=>$data['zone_id'],
             'password' => Hash::make($data['password']),
         ]);
+
+       
     }
 }

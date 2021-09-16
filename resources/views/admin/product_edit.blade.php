@@ -52,6 +52,10 @@
 									<input class="form-control border-primary" type="text" placeholder="Product Name" id="userinput5" name="name" value="{{$user->name}}">
 								</div>
 								<div class="form-group">
+									<label for="userinput5">Sku</label>
+									<input class="form-control border-primary" type="text" placeholder="Product Sku" id="userinput5" name="sku" value="{{$user->sku}}">
+								</div>
+								<div class="form-group">
 									<label for="userinput5">Image</label>
 									<input class="form-control border-primary" type="file" placeholder="Product Name" id="userinput5" name="file">
 								</div>
@@ -59,7 +63,7 @@
 									<label for="userinput5">Price</label>
 									<div class="input-group mt-0">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
+                                            <span class="input-group-text">₦</span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Price" aria-label="Amount (to the nearest dollar)" name="price" value="{{$user->price}}">
                                         <div class="input-group-append">

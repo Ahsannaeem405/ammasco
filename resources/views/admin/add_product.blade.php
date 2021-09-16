@@ -56,6 +56,10 @@ Add Product
 									<input class="form-control border-primary" type="text" placeholder="Product Name" id="userinput5" name="name">
 								</div>
 								<div class="form-group">
+									<label for="userinput5">Sku</label>
+									<input class="form-control border-primary" type="text" placeholder="Product Sku" id="userinput5" name="sku">
+								</div>
+								<div class="form-group">
 									<label for="userinput5">Image</label>
 									<input class="form-control border-primary" type="file" placeholder="Product Name" id="userinput5" name="file">
 								</div>
@@ -63,7 +67,7 @@ Add Product
 									<label for="userinput5">Price</label>
 									<div class="input-group mt-0">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
+                                            <span class="input-group-text">₦</span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Price" aria-label="Amount (to the nearest dollar)" name="price">
                                         <div class="input-group-append">

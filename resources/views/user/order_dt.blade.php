@@ -28,13 +28,13 @@
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                <h3 class="content-header-title mb-0 d-inline-block">Shopping Cart</h3>
+                <h3 class="content-header-title mb-0 d-inline-block">Order</h3>
                 <div class="row breadcrumbs-top d-inline-block">
                     <div class="breadcrumb-wrapper col-12">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a>
                             </li>
-                            <li class="breadcrumb-item active">Shopping Cart
+                            <li class="breadcrumb-item active">Order
                             </li>
                         </ol>
                     </div>
@@ -108,7 +108,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="total-price">${{$row_user->pro->price}}</div>
+                                                        <div class="total-price">₦{{$row_user->pro->price}}</div>
                                                     </td>
                                                     
                                                 </tr>
@@ -137,11 +137,11 @@
 
                                                 $sum=$sum+$qty; @endphp
                                              
-                                            <div class="price-detail">{{$row_user->pro->name}} ({{$row_user->qty}})<span class="float-right">${{$row_user->pro->price * $row_user->qty}}</span></div>
+                                            <div class="price-detail">{{$row_user->pro->name}} ({{$row_user->qty}})<span class="float-right">₦{{$row_user->pro->price * $row_user->qty}}</span></div>
                                             @endforeach
                                             <hr>
                                             <strong>
-                                            <div class="price-detail">Total ({{count($user)}})<span class="float-right">${{$sum}}</span></div></strong>
+                                            <div class="price-detail">Total ({{count($user)}})<span class="float-right">₦{{$sum}}</span></div></strong>
                                             <div class="total-savings">
                                                 <div class="text-right">
                                                 

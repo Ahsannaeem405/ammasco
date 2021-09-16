@@ -109,7 +109,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="total-price">${{$row_user->pro->price}}</div>
+                                                        <div class="total-price">₦{{$row_user->pro->price}}</div>
                                                     </td>
                                                     <td>
                                                         <div class="product-action">
@@ -142,11 +142,11 @@
 
                                                 $sum=$sum+$qty; @endphp
                                              
-                                            <div class="price-detail">{{$row_user->pro->name}} ({{$row_user->qty}})<span class="float-right">${{$row_user->pro->price * $row_user->qty}}</span></div>
+                                            <div class="price-detail">{{$row_user->pro->name}} ({{$row_user->qty}})<span class="float-right">₦{{$row_user->pro->price * $row_user->qty}}</span></div>
                                             @endforeach
                                             <hr>
                                             <strong>
-                                            <div class="price-detail">Total ({{count($user)}})<span class="float-right">${{$sum}}</span></div></strong>
+                                            <div class="price-detail">Total ({{count($user)}})<span class="float-right">₦{{$sum}}</span></div></strong>
                                             <div class="total-savings">
                                                 <div class="text-right">
                                                 @if(count($user)!=null)    

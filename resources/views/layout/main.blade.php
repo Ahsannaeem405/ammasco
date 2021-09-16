@@ -75,8 +75,8 @@
             <div class="navbar-header">
                 <ul class="nav navbar-nav flex-row">
                     <li class="nav-item mobile-menu d-lg-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="logo" src="app_asset/images/logo/log.png">
-                            <h3 class="brand-text">LOGO</h3>
+                    <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="logo" src="{{asset('logo.png')}}" style="width:100%;">
+                            
                         </a></li>
                     
                 </ul>
@@ -177,6 +177,8 @@
                 @if(Auth::user()->view_order=='on')
                 <li class=" nav-item"><a href="{{url('admins/order')}}"><i class="la la-check-circle-o"></i><span class="menu-title" data-i18n="Order">Order</span></a>
                 </li>
+                 <li class=" nav-item"><a href="{{url('admins/order_repoort')}}"><i class="la la-bar-chart"></i><span class="menu-title" data-i18n="Order">Report</span></a>
+                </li>
                 @endif
                 <li class="nav-item has-sub"><a href="#"><i class="la la-user"></i><span class="menu-title" data-i18n="Users">Users</span></a>
                     <ul class="menu-content" style="">
@@ -256,8 +258,10 @@
     <!-- BEGIN: Page JS-->
     <script src="{{asset('app_asset/js/scripts/tables/datatables/datatable-basic.js')}}"></script>
     <script src="{{asset('app_asset/js/scripts/modal/components-modal.js')}}"></script>
-
-    <!-- END: Page JS-->
+    <script src="{{asset('app_asset/js/scripts/pages/ecommerce-product-details.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/forms/icheck/icheck.min.js')}}"></script>
+    
 @show
 </body>
 <!-- END: Body-->

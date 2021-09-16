@@ -33,9 +33,9 @@
         <div class="notfound-bg"></div>
         <div class="notfound">
             <div class="notfound-404">
-                <h1 style="font-size:50px;">Successfully Register</h1>
+                <h1 style="font-size:50px;color: black;">Successfully Register</h1>
             </div>
-            <h2>Wait for admin Approval</h2>
+            <h2 style="color: black;">Wait for admin Approval</h2>
          
 
                                    

@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/pages/ecommerce-cart.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app_asset/css/plugins/forms/checkboxes-radios.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app_asset/vendors/css/tables/datatable/datatables.min.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -58,15 +59,15 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless mb-0">
+                                    <div class="table-responsive" style="overflow-x: hidden;">
+                                        <table class="table table-striped table-bordered file-export" >    
                                             <thead>
                                                 <tr>
                                                     <th>Refrecnce No</th>
                                                     <th>User Name</th>
                                                     <th>Total</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th>Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -95,10 +96,9 @@
 
                                                     </td>
 
-                                                    <td>
+                                                    <td>{{$row_user->created_at->format('d/m/Y')}}
 
-                                                            <a  href="{{url('admins/order_dt/' .$row_user->id)}}">
-                                                                <button type="button" class="btn btn-info">Detail</button></a>
+
                                                             
                                                         
                                                     </td>
@@ -153,6 +153,59 @@
     <script src="{{asset('app_asset/js/scripts/pages/ecommerce-cart.js')}}"></script>
 
     <script src="https://js.paystack.co/v1/inline.js"></script> 
+
+
+
+    <script src="{{asset('app_asset/vendors/js/vendors.min.js')}}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{asset('app_asset/vendors/js/charts/chartist.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/charts/chartist-plugin-tooltip.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/charts/raphael-min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/charts/morris.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/timeline/horizontal-timeline.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{{asset('app_asset/js/core/app-menu.js')}}"></script>
+    <script src="{{asset('app_asset/js/core/app.js')}}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{asset('app_asset/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
+
+
+
+
+
+    <script src="{{asset('app_asset/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('app_asset/js/scripts/tables/datatables/datatable-advanced.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/pdfmake.min.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+
+    
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{asset('app_asset/js/scripts/tables/datatables/datatable-basic.js')}}"></script>
+    <script src="{{asset('app_asset/js/scripts/modal/components-modal.js')}}"></script>
+
+
+
+
+
+    <script src="{{asset('app_asset/vendors/js/vendors.min.js')}}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{asset('app_asset/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/datatable/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/buttons.flash.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/jszip.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/pdfmake.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/vfs_fonts.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('app_asset/vendors/js/tables/buttons.print.min.js')}}"></script>
 <script type="text/javascript">
 var paymentForm = document.getElementById('paymentForm');
 paymentForm.addEventListener('submit', payWithPaystack, false);
